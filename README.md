@@ -1,1 +1,1 @@
-# fakerKz
+# fakerKz - localization data for KZ
