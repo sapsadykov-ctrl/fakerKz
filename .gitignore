@@ -1,0 +1,35 @@
+# Виртуальное окружение
+.venv/
+venv/
+ENV/
+env/
+
+# Кэш Python и байт-код
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Сборка, дистрибутивы и пакеты
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+
+# Файлы окружения и секреты (на будущее)
+.env
+.env.local
+
+# Системные файлы
+.DS_Store
+Thumbs.db
