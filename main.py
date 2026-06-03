@@ -12,16 +12,17 @@ def load_custom_provider(module_name, relative_path):
     spec.loader.exec_module(module)
     return module.Provider
 
-# Загружаем все три провайдера
+# Загружаем все 4 провайдера
 KazakhPersonProvider = load_custom_provider("custom_person", "faker/providers/person/kk_KZ/__init__.py")
 KazakhPhoneProvider = load_custom_provider("custom_phone", "faker/providers/phone_number/kk_KZ/__init__.py")
 KazakhAddressProvider = load_custom_provider("custom_address", "faker/providers/address/kk_KZ/__init__.py")
+KazakhCompanyProvider = load_custom_provider("custom_company", "faker/providers/company/kk_KZ/__init__.py")
 
 fake = Faker()
-# Регистрируем их в Faker
 fake.add_provider(KazakhPersonProvider)
 fake.add_provider(KazakhPhoneProvider)
 fake.add_provider(KazakhAddressProvider)
+fake.add_provider(KazakhCompanyProvider)
 
 print("=== Тестирование полной локализации (Имя + ИИН + Телефон + Адрес) ===")
 for i in range(1, 4):
@@ -30,4 +31,12 @@ for i in range(1, 4):
     print(f"  ИИН:     {fake.iin()}")
     print(f"  Телефон: {fake.phone_number()}")
     print(f"  Адрес:   {fake.address()}")
+    print("-" * 50)
+    
+print("=== Тестирование локализации Казахстана (Профиль компании) ===")
+for i in range(1, 4):
+    print(f"Организация №{i}:")
+    print(f"  Название: {fake.company()}")
+    print(f"  БИН:      {fake.bin()}")
+    print(f"  Адрес:    {fake.address()}")
     print("-" * 50)
