@@ -4,6 +4,7 @@ import re
 import importlib.util
 import unittest
 
+
 # 1. ДИНАМИЧЕСКИЙ ПОИСК ВАШЕГО ПРОВАЙДЕРА ТЕЛЕФОНОВ
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Путь ведет к папке faker/providers внутри вашего репозитория
