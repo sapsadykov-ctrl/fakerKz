@@ -1,0 +1,38 @@
+name: Python Package and Tests
+
+# Указываем триггеры: запускать при пушах и PR в ветку main (или master)
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Тестируем проект сразу на нескольких версиях Python для надежности
+        python-version: ["3.9", "3.10", "3.11"]
+
+    steps:
+    # 1. Скачиваем код репозитория на виртуальную машину GitHub
+    - uses: actions/checkout@v4
+
+    # 2. Настраиваем нужную версию Python
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    # 3. Обновляем pip и устанавливаем оригинальный Faker (нужен как базовая зависимость)
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install faker
+
+    # 4. Запускаем тесты относительным путем, как мы делали в терминале
+    - name: Run tests with unittest
+      run: |
+        python faker/tests/providers/test_kz_provider.py
