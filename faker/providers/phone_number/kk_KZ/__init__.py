@@ -26,3 +26,7 @@ class Provider(PhoneProvider):
         '8 (707) ###-##-##',
         '8 (777) ###-##-##',
     )
+
+    def phone_number(self):
+        """Переопределяем дефолтный метод, чтобы он брал наши форматы"""
+        return self.numerify(self.random_element(self.formats))
