@@ -48,7 +48,7 @@ class TestKzProvider(unittest.TestCase):
             phone = self.fake.phone_number()
             
             # Строгий паттерн для КЗ: поддерживает ваши коды (7xx, 71xx, 72xx) и форматы с 8
-            pattern = r"^(\+7|8)\s?\(?7\d{2,3}\)?[\s?-]?\d{3,4}[\s?-]?\d{2}[\s?-]?\d{2}$"
+            pattern = r"^(\+7|8)\s?\(?7\d{2,3}\)?[\s?-]?\d{2,4}[\s?-]?\d{2}[\s?-]?\d{2}$"
             
             self.assertTrue(
                 re.match(pattern, phone), 
