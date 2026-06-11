@@ -4,16 +4,15 @@ import re
 import importlib.util
 import unittest
 
-
 # 1. ДИНАМИЧЕСКИЙ ПОИСК ВАШЕГО ПРОВАЙДЕРА ТЕЛЕФОНОВ
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-# Путь ведет к папке faker/providers внутри вашего репозитория
-PROVIDERS_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "../../providers"))
+
+# ИСПРАВЛЕНО: Теперь поднимаемся в корень и заходим в папку faker/providers
+PROVIDERS_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "../../faker/providers"))
 
 def load_local_phone_provider():
-    """Ищет конкретно ваш файл провайдера телефонов РК и загружает его класс Provider"""
+    """Ищет конкречно ваш файл провайдера телефонов РК и загружает его класс Provider"""
     target_path = os.path.join(PROVIDERS_DIR, "phone_number/kk_KZ/__init__.py")
-    
     if os.path.exists(target_path):
         spec = importlib.util.spec_from_file_location("dynamic_kz_phone", target_path)
         module = importlib.util.module_from_spec(spec)

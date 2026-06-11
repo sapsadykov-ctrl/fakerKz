@@ -35,4 +35,4 @@ jobs:
     # 4. Запускаем тесты относительным путем, как мы делали в терминале
     - name: Run tests with unittest
       run: |
-        python faker/tests/providers/test_kz_provider.py
+        python tests/providers/test_kz_provider.py
