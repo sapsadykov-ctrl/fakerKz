@@ -17,12 +17,14 @@ KazakhPersonProvider = load_custom_provider("custom_person", "faker/providers/pe
 KazakhPhoneProvider = load_custom_provider("custom_phone", "faker/providers/phone_number/kk_KZ/__init__.py")
 KazakhAddressProvider = load_custom_provider("custom_address", "faker/providers/address/kk_KZ/__init__.py")
 KazakhCompanyProvider = load_custom_provider("custom_company", "faker/providers/company/kk_KZ/__init__.py")
+KazakhAutomotiveProvider = load_custom_provider("custom_automotive", "faker/providers/automotive/kk_KZ/__init__.py")
 
 fake = Faker()
 fake.add_provider(KazakhPersonProvider)
 fake.add_provider(KazakhPhoneProvider)
 fake.add_provider(KazakhAddressProvider)
 fake.add_provider(KazakhCompanyProvider)
+fake.add_provider(KazakhAutomotiveProvider)
 
 print("=== Тестирование полной локализации (Имя + ИИН + Телефон + Адрес) ===")
 for i in range(1, 4):
@@ -39,4 +41,10 @@ for i in range(1, 4):
     print(f"  Название: {fake.company()}")
     print(f"  БИН:      {fake.bin()}")
     print(f"  Адрес:    {fake.address()}")
+    print("-" * 50)
+
+print("=== Тестирование локализации Казахстана (Автомобильные номера) ===")
+for i in range(1, 4):
+    print(f"Автомобиль №{i}:")
+    print(f"  Номер: {fake.license_plate()}")
     print("-" * 50)
